@@ -1,0 +1,104 @@
+Disassembly Listing for Assignment1_2
+Generated From:
+C:/Users/878148/Dropbox/Embedded Systems/practical/Assignment1_2.X/dist/default/debug/Assignment1_2.X.debug.elf
+7-sep-2015 14:52:59
+
+---  c:/users/878148/dropbox/embedded systems/practical/assignment1_2.x/src/assignment1_2.c  ------------
+1:                   /* ========================================================================== */
+2:                   /* assignment1_2.c                                                            */
+3:                   /* ========================================================================== */
+4:                   /* This program is used for demonstrating the transition from programming     */
+5:                   /* language to machine code.                                                  */
+6:                   /* ========================================================================== */
+7:                   /* author:           Ronnie Duisters                                          */
+8:                   /* affiliation:      Fontys Hogescholen Engineering, Eindhoven                */
+9:                   /* initial revision: 30-08-2013 (v1.0)                                        */
+10:                  /* current version:  1.0                                                      */
+11:                  /* changes:                                                                   */
+12:                  /* ========================================================================== */
+13:                  
+14:                  #include <p32xxxx.h>
+15:                  #include "assignment1_2.h"
+16:                  
+17:                  /* -------------------------------------------------------------------------- */
+18:                  /* global variables.                                                          */
+19:                  /* -------------------------------------------------------------------------- */
+20:                  
+21:                  /* -------------------------------------------------------------------------- */
+22:                  /* local function prototypes.                                                 */
+23:                  /* -------------------------------------------------------------------------- */
+24:                  int addnumbers
+25:                  (
+26:                      int a,
+27:                      int b
+28:                  );
+29:                  
+30:                  /* -------------------------------------------------------------------------- */
+31:                  /* main function.                                                             */
+32:                  /* -------------------------------------------------------------------------- */
+33:                  int main( void )
+34:                  {
+9D0000DC  27BDFFD8   ADDIU SP, SP, -40
+9D0000E0  AFBF0024   SW RA, 36(SP)
+9D0000E4  AFBE0020   SW S8, 32(SP)
+9D0000E8  03A0F021   ADDU S8, SP, ZERO
+35:                      int a = 4;
+9D0000EC  24020004   ADDIU V0, ZERO, 4
+9D0000F0  AFC20010   SW V0, 16(S8)
+36:                      int b = 12;
+9D0000F4  2402000C   ADDIU V0, ZERO, 12
+9D0000F8  AFC20014   SW V0, 20(S8)
+37:                      int c;
+38:                      
+39:                      /* ---------------------------------------------------------------------- */
+40:                      /* call the addnumbers function and add a and b into c                    */
+41:                      /* ---------------------------------------------------------------------- */
+42:                      c = addnumbers( a, b ); 
+9D0000FC  8FC40010   LW A0, 16(S8)
+9D000100  8FC50014   LW A1, 20(S8)
+9D000104  0F40004B   JAL addnumbers
+9D000108  00000000   NOP
+9D00010C  AFC20018   SW V0, 24(S8)
+43:                      
+44:                      return 1;
+9D000110  24020001   ADDIU V0, ZERO, 1
+45:                  }
+9D000114  03C0E821   ADDU SP, S8, ZERO
+9D000118  8FBF0024   LW RA, 36(SP)
+9D00011C  8FBE0020   LW S8, 32(SP)
+9D000120  27BD0028   ADDIU SP, SP, 40
+9D000124  03E00008   JR RA
+9D000128  00000000   NOP
+46:                  
+47:                  /* ========================================================================== */
+48:                  /* function: addnumbers( a, b );                                              */
+49:                  /*                                                                            */
+50:                  /* description: adds two integer numbers, a and b, and returns the result.    */
+51:                  /*                                                                            */
+52:                  /* pre:  a - an integer value to be added to b                                */
+53:                  /*       b - an integer value to be added to a                                */
+54:                  /*                                                                            */
+55:                  /* post: return value - the integer sum of a and b                            */
+56:                  /* ========================================================================== */
+57:                  
+58:                  int addnumbers
+59:                  (
+60:                      int a,
+61:                      int b
+62:                  )
+63:                  {
+9D00012C  27BDFFF8   ADDIU SP, SP, -8
+9D000130  AFBE0004   SW S8, 4(SP)
+9D000134  03A0F021   ADDU S8, SP, ZERO
+9D000138  AFC40008   SW A0, 8(S8)
+9D00013C  AFC5000C   SW A1, 12(S8)
+64:                      return a + b;
+9D000140  8FC30008   LW V1, 8(S8)
+9D000144  8FC2000C   LW V0, 12(S8)
+9D000148  00621021   ADDU V0, V1, V0
+65:                  }    
+9D00014C  03C0E821   ADDU SP, S8, ZERO
+9D000150  8FBE0004   LW S8, 4(SP)
+9D000154  27BD0008   ADDIU SP, SP, 8
+9D000158  03E00008   JR RA
+9D00015C  00000000   NOP
