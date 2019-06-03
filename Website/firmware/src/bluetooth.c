@@ -2,10 +2,10 @@
 /** Descriptive File Name
 
   @Company
-    Company Name
+ Fontys
 
   @File Name
-    filename.c
+    bluetooth.c
 
   @Description
  this file contains the definitions of the functions neccessary to communicate 
@@ -14,43 +14,8 @@
  */
 /* ************************************************************************** */
 
-/* ************************************************************************** */
-/* ************************************************************************** */
-/* Section: Included Files                                                    */
-/* ************************************************************************** */
-/* ************************************************************************** */
-
-/* TODO:  Include other files here if needed. */
 #include "bluetooth.h"
 #include "uartjb.h"
-
-/* ************************************************************************** */
-/* ************************************************************************** */
-/* Section: File Scope or Global Data                                         */
-/* ************************************************************************** */
-/* ************************************************************************** */
-
-/*  A brief description of a section can be given directly below the section
-    banner.
- */
-
-/* ************************************************************************** */
-/** Descriptive Data Item Name
-
-  @Summary
-    Brief one-line summary of the data item.
-    
-  @Description
-    Full description, explaining the purpose and usage of data item.
-    <p>
-    Additional description in consecutive paragraphs separated by HTML 
-    paragraph breaks, as necessary.
-    <p>
-    Type "JavaDoc" in the "How Do I?" IDE toolbar for more information on tags.
-    
-  @Remarks
-    Any additional remarks
- */
 
 //holds the received results from scans 
 //since it's a global variable it's initialized to zeros
@@ -154,6 +119,79 @@ void send_toggle_move_backward(int state){
     }
     msg[4] = (msg[1] + msg[2] + msg[3])%255;
     UARTJB_PutString(msg);
+}
+
+void bluetooth_decode_command(char* cmd){
+    if(cmd[0]==0x5F){ //if first character is an underscore continue
+        if((cmd[0]+cmd[1]+cmd[2])%255!=cmd[3]){
+            return;
+        }
+        switch(cmd[1]){ //see what the command is 
+            case SCAN_RESULT_ERROR: //scan error
+                set_rect_result(1,INDEX_ERROR); //set the error result to 1 
+                break;
+              
+            case SCAN_RESULT_RECT1:
+                set_rect_result(cmd[2],INDEX_RECT1);
+                break;
+                
+           case SCAN_RESULT_RECT2:
+                set_rect_result(cmd[2],INDEX_RECT2);
+                break;
+            
+            case SCAN_RESULT_RECT3:
+                set_rect_result(cmd[2],INDEX_RECT3);
+                break;
+                
+            case SCAN_RESULT_RECT4:
+                set_rect_result(cmd[2],INDEX_RECT4);
+                break;
+                
+            case SCAN_RESULT_RECT5:
+                set_rect_result(cmd[2],INDEX_RECT5);
+                break;
+                
+            case SCAN_RESULT_RECT6:
+                set_rect_result(cmd[2],INDEX_RECT6);
+                break;
+                
+            case SCAN_RESULT_RECT7:
+                set_rect_result(cmd[2],INDEX_RECT7);
+                break;
+                
+            case SCAN_RESULT_RECT8:
+                set_rect_result(cmd[2],INDEX_RECT8);
+                break;
+                
+            case SCAN_RESULT_RECT9:
+                set_rect_result(cmd[2],INDEX_RECT9);
+                break;
+                
+            case SCAN_RESULT_RECT10:
+                set_rect_result(cmd[2],INDEX_RECT10);
+                break;
+                
+            case SCAN_RESULT_RECT11:
+                set_rect_result(cmd[2],INDEX_RECT11);
+                break;
+                
+            case SCAN_RESULT_RECT12:
+                set_rect_result(cmd[2],INDEX_RECT12);
+                break;
+                
+            case SCAN_RESULT_RECT13:
+                set_rect_result(cmd[2],INDEX_RECT13);
+                break;
+                
+            case SCAN_RESULT_RECT14:
+                set_rect_result(cmd[2],INDEX_RECT14);
+                break;
+                
+            case SCAN_RESULT_RECT15:
+                set_rect_result(cmd[2],INDEX_RECT15);
+                break;
+        }
+    }
 }
 
 //get rectangle scan result

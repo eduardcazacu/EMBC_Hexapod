@@ -63,7 +63,7 @@ extern "C" {
 #define SCAN_RESULT_RECT14 0xFE
 #define SCAN_RESULT_RECT15 0xFF
 
-    
+#define INDEX_ERROR 0 
 #define INDEX_RECT1 1
 #define INDEX_RECT2 2
 #define INDEX_RECT3 3
@@ -134,6 +134,11 @@ extern "C" {
     
     //gets the result of latest scan at given index
     //index - number corresponding to the rectangle from 1 to 15 
+    
+    
+    void bluetooth_decode_command(char* cmd);
+    
+    
     //returns number in cm 
     //returns 0 if rectangle has never been scanned or wrong index 
     unsigned char get_rect_result(int index);
@@ -148,7 +153,7 @@ extern "C" {
 }
 #endif
 
-#endif /* _EXAMPLE_FILE_NAME_H */
+#endif /* _BLUETOOTH_H */
 
 /* *****************************************************************************
  End of File

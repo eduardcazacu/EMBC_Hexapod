@@ -98,6 +98,7 @@ void __ISR(_UART_1_VECTOR, IPL7SRS) Uart1Handler (void)
 	                fRxDoneJB = 1;
                     //SYS_CONSOLE_MESSAGE("UART1 ISR\r\n");
                     //SYS_CONSOLE_PRINT("UART1 ISR\r\n");
+                    bluetooth_decode_command(rgchRxJB); //handle the command 
 	            }   
 	
 	            ichRxJB++;
