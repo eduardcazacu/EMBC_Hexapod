@@ -33,6 +33,7 @@
 #include "config.h"
 #include "uartjb.h"
 #include "system_definitions.h"
+#include "bluetooth.h"
 
 #define  cchRxMax        0xFF
 
