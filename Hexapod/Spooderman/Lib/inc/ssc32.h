@@ -11,7 +11,7 @@
  * Note: the middle point is always angle 0. Example of range: -45 .. 45 degrees
  */
 
-#define HEXAPOD_NUMBER  1   // valid value is a number between 1 and 7
+#define HEXAPOD_NUMBER  2   // valid value is a number between 1 and 7
 
 #define HEXAPOD_HW_A    1
 #define HEXAPOD_HW_B    2
