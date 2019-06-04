@@ -213,45 +213,14 @@ HTTP_IO_RESULT TCPIP_HTTP_GetExecute(HTTP_CONN_HANDLE connHandle)
 
     httpDataBuff = TCPIP_HTTP_CurrentConnectionDataBufferGet(connHandle);
 
-    if(!memcmp(filename, "index.htm", 9))
+    if(!memcmp(filename, "index.htm/scan", 15))
     {
-        ptr = TCPIP_HTTP_ArgGet(httpDataBuff, (const uint8_t *)"getdistance");
-        if(ptr && !memcmp(ptr, "getdistance", 11)) 
-        {
-            //UARTJB_PutString("start ranging on #2");
-            SYS_CONSOLE_PRINT("start ranging on #2");
-            UARTJB_PutString("d\r\n");
-            //srf_range();
-            // redirect to provide some delay for the data to be ready
-            strcpy((char *)httpDataBuff, "/index.htm");
-            TCPIP_HTTP_CurrentConnectionStatusSet(connHandle, HTTP_REDIRECT);
-        }
         
-        ptr = TCPIP_HTTP_ArgGet(httpDataBuff, (const uint8_t *)"setangle");
+        ptr = TCPIP_HTTP_ArgGet(httpDataBuff, (const uint8_t *)"cmd");
         if(ptr) 
         {
             angle = atoi((char *)ptr);
-            if (angle > 90) angle = 90;
-            else if (angle < -90) angle =-90;
-            if (angle > 0)
-            {
-                sprintf(strAngleHorizontal, "h+%d\r\n",angle);
-                sprintf(strAngleVertical, "v+%d\r\n",angle);
-            }
-            else if (angle == 0)
-            {
-                sprintf(strAngleHorizontal, "h+00\r\n");
-                sprintf(strAngleVertical, "v+00\r\n");
-            }
-            else
-            {
-                sprintf(strAngleHorizontal, "h%d\r\n",angle);
-                sprintf(strAngleVertical, "v%d\r\n",angle);
-            }
-            //servo_setAngle(angle,1);
-            UARTJB_PutString(strAngleHorizontal);
-            //servo_setAngle(angle,2);
-            UARTJB_PutString(strAngleVertical);
+            
         }
     }
 

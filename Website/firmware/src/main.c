@@ -57,6 +57,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "system/common/sys_module.h"   // SYS function prototypes
+#include "bluetooth.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -67,7 +68,7 @@ int main ( void )
 {
     /* Initialize all MPLAB Harmony modules, including application(s). */
     SYS_Initialize ( NULL );
-
+    bluetooth_init();
     while ( true )
     {
         /* Maintain state machines of all polled MPLAB Harmony modules. */
