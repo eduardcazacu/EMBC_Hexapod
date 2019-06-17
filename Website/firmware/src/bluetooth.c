@@ -190,7 +190,7 @@ void bluetooth_decode_command(unsigned char* cmd){
         }
     }
 }
-
+//unused
 //get rectangle scan result
 //to be used when the site polls for scan results
 unsigned char get_rect_result(int index){
@@ -200,7 +200,7 @@ unsigned char get_rect_result(int index){
     return scan_result_arr[index];
 }
 
-
+//unused
 void set_rect_result(unsigned char result, int index){
     scan_result_arr[index] = result;
 }

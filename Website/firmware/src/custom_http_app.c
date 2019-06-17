@@ -1341,7 +1341,7 @@ static HTTP_IO_RESULT HTTPPostDDNSConfig(HTTP_CONN_HANDLE connHandle) {
 
 void TCPIP_HTTP_Print_visionData(HTTP_CONN_HANDLE connHandle) {
     TCP_SOCKET sktHTTP = TCPIP_HTTP_CurrentConnectionSocketGet(connHandle);
-    testPattern(); //generate a new pattern;
+    //testPattern(); //generate a new pattern;
     char dataToSend[30];
     getNewBlocks(dataToSend,30);
     TCPIP_TCP_StringPut(sktHTTP, (const uint8_t *) dataToSend);
