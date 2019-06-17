@@ -59,6 +59,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "uartjb.h"
 
 #include "spooderEyes.h"
+#include "bluetooth.h"
 
 /****************************************************************************
   Section:
@@ -209,36 +210,81 @@ HTTP_IO_RESULT TCPIP_HTTP_GetExecute(HTTP_CONN_HANDLE connHandle) {
     uint8_t filename[20];
     uint8_t *httpDataBuff;
 
+    char cmd = 0;
+
     // Load the file name.
     // Make sure uint8_t filename[] above is large enough for your longest name.
     SYS_FS_FileNameGet(TCPIP_HTTP_CurrentConnectionFileGet(connHandle), filename, 20);
 
     httpDataBuff = TCPIP_HTTP_CurrentConnectionDataBufferGet(connHandle);
 
-    if (!memcmp(filename, "scan", 4)) {
+    if (!memcmp(filename, "index.html", 10)) {
+
+        //TCP_SOCKET sktHTTP = TCPIP_HTTP_CurrentConnectionSocketGet(connHandle);
 
         ptr = TCPIP_HTTP_ArgGet(httpDataBuff, (const uint8_t *) "cmd");
         if (ptr) {
-            //cmd = atoi((char *)ptr);
+            cmd = atoi((char *) ptr);
+            //send the right scan command over bluetooth:
+            switch (cmd) {
+                case 1:
+                    //send one scan request
+                    send_one_shot_scan();
+                    break;
+                case 2:
+                    send_toggle_auto_scan(1);
+                    break;
+
+                case 3:
+                    send_toggle_auto_scan(0);
+                    break;
+                default:
+                    send_toggle_auto_scan(0);
+            }
         }
-    } else if (!memcmp(filename, "index.htm", 9)) {
 
-        //cmd = atoi((char *)ptr);
 
-        TCP_SOCKET sktHTTP = TCPIP_HTTP_CurrentConnectionSocketGet(connHandle);
-
-        dataToSend[0] = 0;
-        dataToSend[1] = 255;
-        dataToSend[2] = 14;
-        dataToSend[3] = 255;
-        dataToSend[4] = 7;
-        dataToSend[5] = 128;
-
-        TCPIP_TCP_StringPut(sktHTTP, (const uint8_t *) dataToSend);
+        ptr = TCPIP_HTTP_ArgGet(httpDataBuff, (const uint8_t *) "move");
+        if (ptr) {
+            cmd = atoi((char *) ptr);
+            //send the right move command over bluetooth:
+            switch (cmd) {
+                case 1:
+                    send_toggle_move_forward(1);
+                    break;
+                case 2:
+                    send_toggle_move_forward(0);
+                    break;
+                case 3:
+                    send_toggle_move_backward(1);
+                    break;
+                case 4:
+                    send_toggle_move_backward(0);
+                    break;
+                case 5:
+                    send_toggle_turn_left(1);
+                    break;
+                case 6:
+                    send_toggle_turn_left(0);
+                    break;
+                case 7:
+                    send_toggle_turn_right(1);
+                    break;
+                case 8:
+                    send_toggle_turn_right(0);
+                    break;
+                default:
+                    send_toggle_move_forward(0);
+                    send_toggle_move_backward(0);
+                    send_toggle_turn_left(0);
+                    send_toggle_turn_right(0);
+            }
+            
+        }
 
     }
 
-
+    cmd++;
     return HTTP_IO_DONE;
 }
 
@@ -1341,9 +1387,9 @@ static HTTP_IO_RESULT HTTPPostDDNSConfig(HTTP_CONN_HANDLE connHandle) {
 
 void TCPIP_HTTP_Print_visionData(HTTP_CONN_HANDLE connHandle) {
     TCP_SOCKET sktHTTP = TCPIP_HTTP_CurrentConnectionSocketGet(connHandle);
-    //testPattern(); //generate a new pattern;
+    testPattern(); //generate a new pattern;
     char dataToSend[30];
-    getNewBlocks(dataToSend,30);
+    getNewBlocks(dataToSend, 30);
     TCPIP_TCP_StringPut(sktHTTP, (const uint8_t *) dataToSend);
 }
 

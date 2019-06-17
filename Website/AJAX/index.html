@@ -35,13 +35,18 @@
     <section id="visionControl">
         <button id="manualScan" onclick='requestScan()'>scan now</button>
         <label class="switch">
-            <input type="checkbox" checked>
+            <input id="contScanCheckbox" type="checkbox" unchecked>
             <span class="slider round"></span>
         </label>
         <a style="color:#333" >Continuous scan : OFF</a>
 
     </section>
-
+    <section id="controlContainer">
+        <button id="fwdBtn" onmousedown='move("fwd pressed")' onmouseup='move("fwd released")'>fwd</button>
+        <button id="bwdBtn" onmousedown='move("bwd pressed")' onmouseup='move("bwd released")'>bwd</button>
+        <button id="leftBtn" onmousedown='move("left pressed")' onmouseup='move("left released")'>left</button>
+        <button id="rightBtn" onmousedown='move("right pressed")' onmouseup='move("right released")'>right</button>
+    </section>
 
     <script src="ajax.js"></script>
 </body>

@@ -30,7 +30,7 @@ void getNewBlocks(char newData[], int length) {
     for (i = 0; i < NUMBER_OF_BLOCKS; i++) {
         if (newBlocks[i] == 1) {
             //check if there is enough space to send one more block
-            if (dataIndex + 2 < length) {
+            if (dataIndex + 1 < length) {
 
                 //this is a new block. add it to the array.
                 newData[dataIndex] = i+1; //send the id of the block 
