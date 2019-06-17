@@ -121,7 +121,7 @@ void send_toggle_move_backward(int state){
     UARTJB_PutString(msg);
 }
 
-void bluetooth_decode_command(unsigned char* cmd){
+void bluetooth_decode_command(char* cmd){
     if(cmd[0]==0x5F){ //if first character is an underscore continue
         if((cmd[0]+cmd[1]+cmd[2])%255!=cmd[3]){
             return;

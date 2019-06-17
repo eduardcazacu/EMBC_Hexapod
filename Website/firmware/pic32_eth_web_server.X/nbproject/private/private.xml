@@ -9,6 +9,9 @@
             <file>file:/D:/Fontys/ES/Harmony/apps/EMBC_Hexapod/Website/firmware/src/uartjb.c</file>
             <file>file:/D:/Fontys/ES/Harmony/framework/system/common/sys_module.h</file>
             <file>file:/D:/Fontys/ES/Harmony/apps/EMBC_Hexapod/Website/firmware/src/bluetooth.h</file>
+            <file>file:/D:/Fontys/ES/Harmony/apps/EMBC_Hexapod/Website/firmware/src/spooderEyes.c</file>
+            <file>file:/D:/Fontys/ES/Harmony/apps/EMBC_Hexapod/Website/firmware/src/custom_http_app.c</file>
+            <file>file:/D:/Fontys/ES/Harmony/apps/EMBC_Hexapod/Website/firmware/src/spooderEyes.h</file>
         </group>
     </open-files>
 </project-private>
