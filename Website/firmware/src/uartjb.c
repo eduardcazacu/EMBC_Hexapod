@@ -39,7 +39,7 @@
 
 volatile unsigned char fRxDoneJB;
 volatile unsigned char ichRxJB;
-char rgchRxJB[cchRxMax];
+unsigned char rgchRxJB[cchRxMax];
 
 /* ************************************************************************** */
 

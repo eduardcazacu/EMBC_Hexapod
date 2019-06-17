@@ -136,7 +136,7 @@ extern "C" {
     //index - number corresponding to the rectangle from 1 to 15 
     
     
-    void bluetooth_decode_command(char* cmd);
+    void bluetooth_decode_command(unsigned char* cmd);
     
     
     //returns number in cm 

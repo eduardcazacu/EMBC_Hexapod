@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="62">
+<configurationDescriptor version="65">
   <logicalFolder name="root" displayName="root" projectFiles="true">
     <logicalFolder name="f1" displayName="Header Files" projectFiles="true">
       <logicalFolder name="f1" displayName="app" projectFiles="true">
@@ -78,6 +78,7 @@
         <itemPath>../src/uartjb.h</itemPath>
         <itemPath>../src/uart.h</itemPath>
         <itemPath>../src/spooderEyes.h</itemPath>
+        <itemPath>../src/bluetooth.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="bsp" projectFiles="true">
         <logicalFolder name="f2" displayName="pic32mx_eth_sk" projectFiles="true">
@@ -643,6 +644,7 @@
         <itemPath>../src/uartjb.c</itemPath>
         <itemPath>../src/uart.c</itemPath>
         <itemPath>../src/spooderEyes.c</itemPath>
+        <itemPath>../src/bluetooth.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="bsp" projectFiles="true">
         <logicalFolder name="f2" displayName="pic32mx_eth_sk" projectFiles="true">
@@ -951,9 +953,12 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PK3OBPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>1.44</languageToolchainVersion>
+        <languageToolchainVersion>2.10</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
+      <packs>
+        <pack name="PIC32MX_DFP" vendor="Microchip" version="1.0.23"/>
+      </packs>
       <compileType>
         <linkerTool>
           <linkerLibItems>
@@ -3456,9 +3461,12 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>RealICEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>1.44</languageToolchainVersion>
+        <languageToolchainVersion>2.10</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
+      <packs>
+        <pack name="PIC32MZ-EF_DFP" vendor="Microchip" version="1.0.17"/>
+      </packs>
       <compileType>
         <linkerTool>
           <linkerLibItems>
@@ -6214,9 +6222,12 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>RealICEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>1.44</languageToolchainVersion>
+        <languageToolchainVersion>2.10</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
+      <packs>
+        <pack name="PIC32MZ-EF_DFP" vendor="Microchip" version="1.0.17"/>
+      </packs>
       <compileType>
         <linkerTool>
           <linkerLibItems>

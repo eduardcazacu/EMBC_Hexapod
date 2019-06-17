@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="62">
+<configurationDescriptor version="65">
   <projectmakefile>Makefile</projectmakefile>
   <defaultConf>0</defaultConf>
   <confs>
@@ -23,7 +23,7 @@
     </conf>
     <conf name="pic32mz_ef_sk" type="2">
       <platformToolSN></platformToolSN>
-      <languageToolchainDir>C:\Program Files (x86)\Microchip\xc32\v1.44\bin</languageToolchainDir>
+      <languageToolchainDir>C:\Program Files (x86)\Microchip\xc32\v2.10\bin</languageToolchainDir>
       <mdbdebugger version="1">
         <placeholder1>place holder 1</placeholder1>
         <placeholder2>place holder 2</placeholder2>
@@ -41,7 +41,7 @@
     </conf>
     <conf name="pic32mz_ef_sk_16b" type="2">
       <platformToolSN></platformToolSN>
-      <languageToolchainDir>C:\Program Files (x86)\Microchip\xc32\v1.44\bin</languageToolchainDir>
+      <languageToolchainDir>C:\Program Files (x86)\Microchip\xc32\v2.10\bin</languageToolchainDir>
       <mdbdebugger version="1">
         <placeholder1>place holder 1</placeholder1>
         <placeholder2>place holder 2</placeholder2>
