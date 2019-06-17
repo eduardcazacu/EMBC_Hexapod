@@ -50,8 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-Website/firmware/pic32_eth_web_server.X/nbproject/configurations.xml
-Website/firmware/pic32_eth_web_server.X/nbproject/Makefile-genesis.properties
-Website/firmware/pic32_eth_web_server.X/nbproject/Makefile-pic32mx_eth_sk2.mk
-Website/firmware/pic32_eth_web_server.X/nbproject/private/configurations.xml
-Website/firmware/pic32_eth_web_server.X/nbproject/private/private.xml
+
+sys_tmr.o.d.tmp
+memoryfile.xml
+*.mk
+configurations.xml
+.gitignore
