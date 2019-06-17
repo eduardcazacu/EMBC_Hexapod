@@ -31,15 +31,7 @@ header{
     height:10vh;
 }
 
-#visionContainer{
-    margin-top:2.5vh;
-    width:60%;
-    margin-left: calc(20% - 70px);
-    height:50vh;
-    background: #fff;
-    border-radius:3px;
-    padding:10px;
-}
+
 
 #visionControl{
     width: 100px;
@@ -150,3 +142,22 @@ button:hover{
   .slider.round:before {
     border-radius: 50%;
   }
+
+
+  #visionContainer{
+    margin-top:2.5vh;
+    width:60%;
+    margin-left: calc(20% - 70px);
+    height:50vh;
+    background: #fff;
+    border-radius:3px;
+    padding:10px;
+}
+
+.visionBlock{
+    width: 20%;
+    height: 33%;
+    background: #333;
+    display:table;
+    float:left;
+}
