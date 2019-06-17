@@ -16,6 +16,7 @@
 
 #include "bluetooth.h"
 #include "uartjb.h"
+#include "spooderEyes.h"
 
 //holds the received results from scans 
 //since it's a global variable it's initialized to zeros
@@ -127,68 +128,64 @@ void bluetooth_decode_command(unsigned char* cmd){
             return;
         }
         switch(cmd[1]){ //see what the command is 
-            case SCAN_RESULT_ERROR: //scan error
-                set_rect_result(1,INDEX_ERROR); //set the error result to 1 
-                break;
-              
             case SCAN_RESULT_RECT1:
-                set_rect_result(cmd[2],INDEX_RECT1);
+                setNewBlock(INDEX_RECT1, cmd[2]);
                 break;
                 
            case SCAN_RESULT_RECT2:
-                set_rect_result(cmd[2],INDEX_RECT2);
+                setNewBlock(INDEX_RECT2, cmd[2]);
                 break;
             
             case SCAN_RESULT_RECT3:
-                set_rect_result(cmd[2],INDEX_RECT3);
+                setNewBlock(INDEX_RECT3, cmd[2]);
                 break;
                 
             case SCAN_RESULT_RECT4:
-                set_rect_result(cmd[2],INDEX_RECT4);
+                setNewBlock(INDEX_RECT4, cmd[2]);
                 break;
                 
             case SCAN_RESULT_RECT5:
-                set_rect_result(cmd[2],INDEX_RECT5);
+                setNewBlock(INDEX_RECT5, cmd[2]);
                 break;
                 
             case SCAN_RESULT_RECT6:
-                set_rect_result(cmd[2],INDEX_RECT6);
+                setNewBlock(INDEX_RECT6, cmd[2]);
                 break;
                 
             case SCAN_RESULT_RECT7:
-                set_rect_result(cmd[2],INDEX_RECT7);
+                setNewBlock(INDEX_RECT7, cmd[2]);
                 break;
                 
             case SCAN_RESULT_RECT8:
-                set_rect_result(cmd[2],INDEX_RECT8);
+                setNewBlock(INDEX_RECT8, cmd[2]);
                 break;
                 
             case SCAN_RESULT_RECT9:
-                set_rect_result(cmd[2],INDEX_RECT9);
+                setNewBlock(INDEX_RECT9, cmd[2]);
                 break;
                 
             case SCAN_RESULT_RECT10:
-                set_rect_result(cmd[2],INDEX_RECT10);
+                setNewBlock(INDEX_RECT10, cmd[2]);
                 break;
                 
             case SCAN_RESULT_RECT11:
-                set_rect_result(cmd[2],INDEX_RECT11);
+                setNewBlock(INDEX_RECT11, cmd[2]);
                 break;
                 
             case SCAN_RESULT_RECT12:
-                set_rect_result(cmd[2],INDEX_RECT12);
+                setNewBlock(INDEX_RECT12, cmd[2]);
                 break;
                 
             case SCAN_RESULT_RECT13:
-                set_rect_result(cmd[2],INDEX_RECT13);
+                setNewBlock(INDEX_RECT13, cmd[2]);
                 break;
                 
             case SCAN_RESULT_RECT14:
-                set_rect_result(cmd[2],INDEX_RECT14);
+                setNewBlock(INDEX_RECT14, cmd[2]);
                 break;
                 
             case SCAN_RESULT_RECT15:
-                set_rect_result(cmd[2],INDEX_RECT15);
+                setNewBlock(INDEX_RECT15, cmd[2]);
                 break;
         }
     }
