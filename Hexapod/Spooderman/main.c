@@ -16,8 +16,8 @@ int freq = 40000000;
 void main() {
     //__builtin_enable_interrupts();
     
-    enum WState Walkstate;
-    Walkstate = stp;
+    enum WState WalkState;
+    WalkState = stp;
     macro_enable_interrupts();
     UART_Init(baud);
     UART_InitPoll(baud);
