@@ -52,3 +52,26 @@ void main() {
         //HERE: Scan switch case?
     }
 }
+
+//angles between -45 and 45
+void moveHead() {
+    
+    //move to top left
+    sequencer_moveHeadHorizontal(-45);
+    DelayAprox10Us(1000);
+    sequencer_moveHeadVertical(-45);
+    DelayAprox10Us(2000);
+    
+    //move to middle left
+    sequencer_moveHeadHorizontal(0);
+    DelayAprox10Us(500);
+    sequencer_moveHeadVertical(0);
+    DelayAprox10Us(2000);
+    
+    //move to bottom left
+    sequencer_moveHeadHorizontal(45);
+    DelayAprox10Us(500);
+    sequencer_moveHeadVertical(45);
+    DelayAprox10Us(2000);
+    
+}
