@@ -8,7 +8,7 @@
 #ifndef CONFIG_H
 #define	CONFIG_H
 
-#define PB_FRQ  40000000
+#define PB_FRQ  96000000
 
 #define macro_enable_interrupts() \
 {  unsigned int val = 0;\

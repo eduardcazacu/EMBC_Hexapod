@@ -77,6 +77,7 @@
         <itemPath>../src/timer.h</itemPath>
         <itemPath>../src/uartjb.h</itemPath>
         <itemPath>../src/uart.h</itemPath>
+        <itemPath>../src/bluetooth.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="bsp" projectFiles="true">
         <logicalFolder name="f2" displayName="pic32mx_eth_sk" projectFiles="true">
@@ -641,6 +642,8 @@
         <itemPath>../src/timer.c</itemPath>
         <itemPath>../src/uartjb.c</itemPath>
         <itemPath>../src/uart.c</itemPath>
+        <itemPath>../src/spooderEyes.c</itemPath>
+        <itemPath>../src/bluetooth.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="bsp" projectFiles="true">
         <logicalFolder name="f2" displayName="pic32mx_eth_sk" projectFiles="true">
@@ -949,7 +952,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PK3OBPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>1.44</languageToolchainVersion>
+        <languageToolchainVersion>2.10</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <compileType>
@@ -3454,7 +3457,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>RealICEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>1.44</languageToolchainVersion>
+        <languageToolchainVersion>2.10</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <compileType>
@@ -6212,7 +6215,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>RealICEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>1.44</languageToolchainVersion>
+        <languageToolchainVersion>2.10</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <compileType>

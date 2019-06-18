@@ -33,8 +33,8 @@ extern "C" {
 #define NUMBER_OF_BLOCKS 15
     
     //an array for storing the data:
-    int blocks[NUMBER_OF_BLOCKS]; //the latest blocks
-    int newBlocks[NUMBER_OF_BLOCKS];  //keep track of which blocks are new and haven't been
+    char blocks[NUMBER_OF_BLOCKS]; //the latest blocks
+    char newBlocks[NUMBER_OF_BLOCKS];  //keep track of which blocks are new and haven't been
                         //sent to the website
     
     
@@ -55,7 +55,8 @@ extern "C" {
      */
     void getNewBlocks(char newData[], int length);
     
-    
+    char testArr[] = {1,10,20,30,40,50,60,70,80,100,120,160,180,210,255};
+    void testPattern();
     
     /* Provide C++ Compatibility */
 #ifdef __cplusplus

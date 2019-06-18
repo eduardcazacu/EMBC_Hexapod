@@ -56,3 +56,6 @@ memoryfile.xml
 *.mk
 configurations.xml
 .gitignore
+Website/firmware/pic32_eth_web_server.X/nbproject/Makefile-genesis.properties
+Website/firmware/pic32_eth_web_server.X/nbproject/private/private.xml
+Website/firmware/pic32_eth_web_server.X/dist/pic32mx_eth_sk2/production/memoryfile.xml

@@ -63,22 +63,21 @@ extern "C" {
 #define SCAN_RESULT_RECT14 0xFE
 #define SCAN_RESULT_RECT15 0xFF
 
-#define INDEX_ERROR 0 
-#define INDEX_RECT1 1
-#define INDEX_RECT2 2
-#define INDEX_RECT3 3
-#define INDEX_RECT4 4
-#define INDEX_RECT5 5
-#define INDEX_RECT6 6
-#define INDEX_RECT7 7
-#define INDEX_RECT8 8
-#define INDEX_RECT9 9
-#define INDEX_RECT10 10
-#define INDEX_RECT11 11
-#define INDEX_RECT12 12
-#define INDEX_RECT13 13
-#define INDEX_RECT14 14
-#define INDEX_RECT15 15
+#define INDEX_RECT1 0
+#define INDEX_RECT2 1
+#define INDEX_RECT3 2
+#define INDEX_RECT4 3
+#define INDEX_RECT5 4
+#define INDEX_RECT6 5
+#define INDEX_RECT7 6
+#define INDEX_RECT8 7
+#define INDEX_RECT9 8
+#define INDEX_RECT10 9
+#define INDEX_RECT11 10
+#define INDEX_RECT12 11
+#define INDEX_RECT13 12
+#define INDEX_RECT14 13
+#define INDEX_RECT15 14
 
 #define COMMAND_PREFIX 0x5F 
 
@@ -136,7 +135,7 @@ extern "C" {
     //index - number corresponding to the rectangle from 1 to 15 
     
     
-    void bluetooth_decode_command(char* cmd);
+    void bluetooth_decode_command(unsigned char* cmd);
     
     
     //returns number in cm 

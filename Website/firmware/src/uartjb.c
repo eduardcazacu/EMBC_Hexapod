@@ -39,7 +39,7 @@
 
 volatile unsigned char fRxDoneJB;
 volatile unsigned char ichRxJB;
-char rgchRxJB[cchRxMax];
+unsigned char rgchRxJB[cchRxMax];
 
 /* ************************************************************************** */
 
@@ -77,15 +77,12 @@ void __ISR(_UART_1_VECTOR, IPL7SRS) Uart1Handler (void)
 {
 	unsigned char bVal;
 	
-    SYS_CONSOLE_MESSAGE("UART1 ISR\r\n");
+//    SYS_CONSOLE_MESSAGE("UART1 ISR\r\n");
     
 	//Read the Uart1 rx buffer while data is available
 	while(U1STAbits.URXDA)
 	{
 		bVal = (unsigned char)U1RXREG;
-		
-		if(!fRxDoneJB)
-	    {
 	        // Do we have space to store another character?
 	        if (cchRxMax > ichRxJB)
 	        {
@@ -94,23 +91,22 @@ void __ISR(_UART_1_VECTOR, IPL7SRS) Uart1Handler (void)
 	            // Is this the last character of the command?
 	            if(('\n' == rgchRxJB[ichRxJB] ) && ('\r' == rgchRxJB[ichRxJB-1]))
 	            {
-	                // Yes.
-	                fRxDoneJB = 1;
-                    //SYS_CONSOLE_MESSAGE("UART1 ISR\r\n");
-                    //SYS_CONSOLE_PRINT("UART1 ISR\r\n");
                     bluetooth_decode_command(rgchRxJB); //handle the command 
-	            }   
-	
-	            ichRxJB++;
+                    ichRxJB=0;
+                    memset(rgchRxJB,0,cchRxMax);
+	            }
+                else
+                {
+                    ichRxJB++;
+                }
 	        }   
 	        else
 	        {
-	            // No we don't have space to store anymore characters.
-	            // Mark the command as complete.
-	
-	            fRxDoneJB = 1;
+            //something fucked up terribly wrong
+                //start from scratch 
+                memset(rgchRxJB,0,cchRxMax);
+                ichRxJB=0;
 	        }   
-    	}  
 	}  
 	//Clear the Uart1 interrupt flag.
 	IFS1bits.U1RXIF = 0;
