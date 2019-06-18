@@ -6,12 +6,9 @@
 #include <xc.h>
 #include <sys/attribs.h>
 #include "config.h"
+#include "ssc32.h"
 
 enum WState{fwd,bwk,lft,rgt,stp};
-
-
-#define baud 115200
-int freq = 40000000;
 
 void main() {
     //__builtin_enable_interrupts();
@@ -19,34 +16,38 @@ void main() {
     enum WState WalkState;
     WalkState = stp;
     macro_enable_interrupts();
-    UART_Init(baud);
-    UART_InitPoll(baud);
-    sequencer_init(freq);
+    UART_Init(UART_BAUDRATE);
+    //UART_InitPoll(UART_BAUDRATE);
+    sequencer_init(PB_FRQ);
     DelayAprox10Us(1000); //Wait 100ms for initialization
     sequencer_wake();
-    DelayAprox10Us(1000); //Wait 100ms for Spooder to stand up
-    
-    
+    //DelayAprox10Us(1000); //Wait 100ms for Spooder to stand up
+    //DelayAprox10Us(10000);
+    //sequencer_sleep();
+    sequencer_walkForward();
+    DelayAprox10Us(20000);
+    sequencer_stop();
     
     
     while(1)    //While only when connected to BT, to be implemented (Watchdog?)
     {
         //HERE: command decoder. Split walk commands from scan commands?
-        switch(WalkState)
-        {
-        case stp:
-            sequencer_stop();
-        case fwd:
-            sequencer_walkForward();
-        case bwk:
-            sequencer_walkBack();
-        case lft:
-            sequencer_walkLeft();
-        case rgt:
-            sequencer_walkRight();
-        default:
-            sequencer_stop();
-        }
+
+//        switch(WalkState)
+//        {
+//        case stp:
+//            //sequencer_wake();
+//        case fwd:
+//            sequencer_walkForward();
+//        case bwk:
+//            sequencer_walkBack();
+//        case lft:
+//            sequencer_walkLeft();
+//        case rgt:
+//            sequencer_walkRight();
+//        default:
+//            sequencer_stop();
+//        }
         
         //HERE: Scan switch case?
     }
