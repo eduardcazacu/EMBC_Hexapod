@@ -38,14 +38,18 @@
             <input id="contScanCheckbox" type="checkbox" unchecked>
             <span class="slider round"></span>
         </label>
-        <a style="color:#333" >Continuous scan : OFF</a>
+        <a style="color:#333">Continuous scan : OFF</a>
 
     </section>
     <section id="controlContainer">
-        <button id="fwdBtn" onmousedown='move("fwd pressed")' onmouseup='move("fwd released")'>fwd</button>
-        <button id="bwdBtn" onmousedown='move("bwd pressed")' onmouseup='move("bwd released")'>bwd</button>
-        <button id="leftBtn" onmousedown='move("left pressed")' onmouseup='move("left released")'>left</button>
-        <button id="rightBtn" onmousedown='move("right pressed")' onmouseup='move("right released")'>right</button>
+        <input type="button" class="navBtn" id="up" onmousedown='move("fwd pressed")' onmouseup='move("fwd released")'
+            value=&#8679></button>
+        <input type="button" class="navBtn" id="down" onmousedown='move("bwd pressed")' onmouseup='move("bwd released")'
+            value=&#8681></button>
+        <input type="button" class="navBtn" id="left" onmousedown='move("left pressed")' onmouseup='move("left released")'
+            value=&#8678></button>
+        <input type="button" class="navBtn" id="right" onmousedown='move("right pressed")' onmouseup='move("right released")'
+            value=&#8680></button>
     </section>
 
     <script src="ajax.js"></script>
