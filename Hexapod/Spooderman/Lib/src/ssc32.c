@@ -6,7 +6,7 @@
 #include "ssc32.h"
 #include "uart.h"
 
-#define HEXAPOD_NUMBER  2   // valid value is a number between 1 and 7
+#define HEXAPOD_NUMBER  1   // valid value is a number between 1 and 7
 
 const int channels[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31 };
 

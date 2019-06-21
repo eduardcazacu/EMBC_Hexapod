@@ -38,87 +38,102 @@ void bluetooth_init() {
 /*  TX functions
  */
 
+//unused
 //send error flag to spider
 void send_internal_server_fault(){
-    char msg[4];
-    msg[1] = COMMAND_PREFIX; 
-    msg[2] = COMMAND_INTERNAL_SERVER_FAULT;
-    msg[3] = 0;
-    msg[4] = (msg[1] + msg[2] + msg[3])%255;
+    char msg[6];
+    msg[0] = COMMAND_PREFIX; 
+    msg[1] = COMMAND_INTERNAL_SERVER_FAULT;
+    msg[2] = 0;
+    msg[3] = (msg[0] + msg[1] + msg[2])%255;
+    msg[4] = 0x0d; ///r/n
+    msg[5] = 0x0a; 
     UARTJB_PutString(msg);
 }
 
 void send_toggle_auto_scan(int state){
-    char msg[4];
-    msg[1] = COMMAND_PREFIX; 
-    msg[2] = COMMAND_TOGGLE_AUTO_SCANNING;
+    char msg[6];
+    msg[0] = COMMAND_PREFIX; 
+    msg[1] = COMMAND_TOGGLE_AUTO_SCANNING;
     if (state==0||state==1){
-        msg[3]=state;
+        msg[2]=state;
     } else {
         return; 
     }
-    msg[4] = (msg[1] + msg[2] + msg[3])%255;
+    msg[3] = (msg[0] + msg[1] + msg[2])%255;
+    msg[4] = 0x0d; ///r/n
+    msg[5] = 0x0a; 
     UARTJB_PutString(msg);
 }
 
 void send_one_shot_scan(){
-    char msg[4];
-    msg[1] = COMMAND_PREFIX; 
-    msg[2] = COMMAND_ONE_SHOT_SCAN;
-    msg[3] = 0;
-    msg[4] = (msg[1] + msg[2] + msg[3])%255;
+    char msg[6];
+    msg[0] = COMMAND_PREFIX; 
+    msg[1] = COMMAND_ONE_SHOT_SCAN;
+    msg[2] = 0;
+    msg[3] = (msg[0] + msg[1] + msg[2])%255;
+    msg[4] = 0x0d; ///r/n
+    msg[5] = 0x0a; 
     UARTJB_PutString(msg);
 }
 
 void send_toggle_move_forward(int state){
-    char msg[4];
-    msg[1] = COMMAND_PREFIX; 
-    msg[2] = COMMAND_MOVE_FORWARD;
+    char msg[6];
+    msg[0] = COMMAND_PREFIX; 
+    msg[1] = COMMAND_MOVE_FORWARD;
     if (state==0||state==1){
-        msg[3]=state;
+        msg[2]=state;
     } else {
         return; 
     }
-    msg[4] = (msg[1] + msg[2] + msg[3])%255;
+    msg[3] = (msg[0] + msg[1] + msg[2])%255;
+    msg[4] = 0x0d; ///r/n
+    msg[5] = 0x0a; 
     UARTJB_PutString(msg);
 }
 
 void send_toggle_turn_left(int state){
-    char msg[4];
-    msg[1] = COMMAND_PREFIX; 
-    msg[2] = COMMAND_TURN_LEFT;
+    char msg[6];
+    msg[0] = COMMAND_PREFIX; 
+    msg[1] = COMMAND_TURN_LEFT;
     if (state==0||state==1){
-        msg[3]=state;
+        msg[2]=state;
     } else {
         return; 
     }
-    msg[4] = (msg[1] + msg[2] + msg[3])%255;
+    msg[3] = (msg[0] + msg[1] + msg[2])%255;
+    msg[4] = 0x0d; ///r/n
+    msg[5] = 0x0a; 
     UARTJB_PutString(msg);
 }
 
 void send_toggle_turn_right(int state){
-    char msg[4];
-    msg[1] = COMMAND_PREFIX; 
-    msg[2] = COMMAND_TURN_RIGHT;
+    char msg[6];
+    msg[0] = COMMAND_PREFIX; 
+    msg[1] = COMMAND_TURN_RIGHT;
     if (state==0||state==1){
-        msg[3]=state;
+        msg[2]=state;
     } else {
         return; 
     }
-    msg[4] = (msg[1] + msg[2] + msg[3])%255;
+    msg[3] = (msg[0] + msg[1] + msg[2])%255;
+    msg[4] = 0x0d; ///r/n
+    msg[5] = 0x0a; 
     UARTJB_PutString(msg);
 }
 
 void send_toggle_move_backward(int state){
-    char msg[4];
-    msg[1] = COMMAND_PREFIX; 
-    msg[2] = COMMAND_MOVE_BACKWARD;
+    char msg[6];
+    msg[0] = COMMAND_PREFIX; 
+    msg[1] = COMMAND_MOVE_BACKWARD;
     if (state==0||state==1){
-        msg[3]=state;
+        msg[2]=state;
     } else {
         return; 
     }
-    msg[4] = (msg[1] + msg[2] + msg[3])%255;
+    msg[3] = (msg[0] + msg[1] + msg[2])%255;
+    msg[4] = 0x0d; ///r/n
+    msg[5] = 0x0a; 
     UARTJB_PutString(msg);
 }
 
@@ -190,7 +205,7 @@ void bluetooth_decode_command(unsigned char* cmd){
         }
     }
 }
-
+//unused
 //get rectangle scan result
 //to be used when the site polls for scan results
 unsigned char get_rect_result(int index){
@@ -200,7 +215,7 @@ unsigned char get_rect_result(int index){
     return scan_result_arr[index];
 }
 
-
+//unused
 void set_rect_result(unsigned char result, int index){
     scan_result_arr[index] = result;
 }

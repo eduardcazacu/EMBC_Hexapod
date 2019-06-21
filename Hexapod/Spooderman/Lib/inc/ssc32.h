@@ -11,7 +11,7 @@
  * Note: the middle point is always angle 0. Example of range: -45 .. 45 degrees
  */
 
-#define HEXAPOD_NUMBER  2   // valid value is a number between 1 and 7
+#define HEXAPOD_NUMBER  1   // valid value is a number between 1 and 7
 
 #define HEXAPOD_HW_A    1
 #define HEXAPOD_HW_B    2
@@ -22,7 +22,7 @@
 	#define HEXAPOD_HW_VERSION     HEXAPOD_HW_B
 #endif
 
-#define UART_BAUDRATE      9600  // default uart baudrate
+#define UART_BAUDRATE      38400  // default uart baudrate
 #define DEFAULT_RESOLUTION 90    // servo resolution in degrees
 #if HEXAPOD_HW_VERSION == HEXAPOD_HW_A
 	#define DEFAULT_MIN_WIDTH  1100   // servo minimum pulse width in us
