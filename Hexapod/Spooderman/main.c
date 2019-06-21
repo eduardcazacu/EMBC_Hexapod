@@ -15,15 +15,22 @@
 
 enum WState{fwd,bwk,lft,rgt,stp};
 
+//custom scan functions
 void fullScan();
 void neutralScan();
 
-//srf
+//srf functions
+unsigned char srf_startRanging();
+unsigned char srf_getDistance(short int *distance);
+void srf_init(int freq);
+
+//srf variables
 char waitdone = 0;
 char comm1[] = {0x00, 0x51};
 char comm2[] = {0x02};
 char a;
 short int dst_arr;
+short int distance[15] = {};
 
 void main() {
     //__builtin_enable_interrupts();
@@ -43,15 +50,26 @@ void main() {
     DelayAprox10Us(20000);
     sequencer_stop();
     DelayAprox10Us(10000);
+    sequencer_wake();
+    DelayAprox10Us(10000);
      
-    int freq = 1;
-    srf_init(int freq);
-    srf_startRanging();
-    srf_getDistance(&dst_arr);
+    //int freq = 400000;
+    srf_init(400000);
+    
+    fullScan();
+    DelayAprox10Us(10000);
+    
+    neutralScan();
             
     while(1)    //While only when connected to BT, to be implemented (Watchdog?)
     {     
-       
+       neutralScan();
+       if (distance[8] > 50 ) {
+           sequencer_walkBack();
+           DelayAprox10Us(10000);
+           sequencer_stop();
+           
+       }
         //HERE: command decoder. Split walk commands from scan commands?
         
 //        switch(WalkState)
@@ -74,67 +92,214 @@ void main() {
 }
 
 
-void fullScan(int var) {
-   
+void fullScan() {
    
     //move to top left
     sequencer_moveHeadHorizontal(-45);
     DelayAprox10Us(shortWait);
     sequencer_moveHeadVertical(-45);
+    srf_startRanging();
     DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[0] = dst_arr;
+    }
+    else {
+        distance[0] = 0;
+    }
     
-    //move to middle left
+    
+    //square 2
     sequencer_moveHeadHorizontal(-45);
     sequencer_moveHeadVertical(0);
+    srf_startRanging();
     DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[1] = dst_arr;
+    }
+    else {
+        distance[1] = 0;
+    }
     
-    //move to bottom left
+    //square 3
     sequencer_moveHeadHorizontal(-45);
     sequencer_moveHeadVertical(45);
+    srf_startRanging();
     DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[2] = dst_arr;
+    }
+    else {
+        distance[2] = 0;
+    }
    
-    //move to bottom center
-    sequencer_moveHeadHorizontal(0);
+    //square 4
+    sequencer_moveHeadHorizontal(-23);
     DelayAprox10Us(shortWait);
     sequencer_moveHeadVertical(45);
+    srf_startRanging();
     DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[3] = dst_arr;
+    }
+    else {
+        distance[3] = 0;
+    }
     
-    //move to middle center
-    sequencer_moveHeadHorizontal(0);
+    //square 5
+    sequencer_moveHeadHorizontal(-23);
     sequencer_moveHeadVertical(0);
+    srf_startRanging();
     DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[4] = dst_arr;
+    }
+    else {
+        distance[4] = 0;
+    }
     
-    //move to top center
-    sequencer_moveHeadHorizontal(0);
+    //square 6
+    sequencer_moveHeadHorizontal(-23);
     sequencer_moveHeadVertical(-45);
+    srf_startRanging();
     DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[5] = dst_arr;
+    }
+    else {
+        distance[5] = 0;
+    }
     
-    //move to top right
-    sequencer_moveHeadHorizontal(45);
+    //square 7
+    sequencer_moveHeadHorizontal(0);
     DelayAprox10Us(shortWait);
     sequencer_moveHeadVertical(-45);
+    srf_startRanging();
     DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[6] = dst_arr;
+    }
+    else {
+        distance[6] = 0;
+    }
     
-    //move to middle right
-    sequencer_moveHeadHorizontal(45);
+    //square 8
+    sequencer_moveHeadHorizontal(0);
     sequencer_moveHeadVertical(0);
+    srf_startRanging();
     DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[7] = dst_arr;
+    }
+    else {
+        distance[7] = 0;
+    }
+    
+    //square 9
+    sequencer_moveHeadHorizontal(0);
+    sequencer_moveHeadVertical(45);
+    srf_startRanging();
+    DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[8] = dst_arr;
+    }
+    else {
+        distance[8] = 0;
+    }
+    
+    //square 10
+    sequencer_moveHeadHorizontal(23);
+    DelayAprox10Us(shortWait);
+    sequencer_moveHeadVertical(45);
+    srf_startRanging();
+    DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[9] = dst_arr;
+    }
+    else {
+        distance[9] = 0;
+    }
+    
+    //square 11
+    sequencer_moveHeadHorizontal(23);
+    sequencer_moveHeadVertical(0);
+    srf_startRanging();
+    DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[10] = dst_arr;
+    }
+    else {
+        distance[10] = 0;
+    }
+    
+    //square 12
+    sequencer_moveHeadHorizontal(23);
+    sequencer_moveHeadVertical(-45);
+    srf_startRanging();
+    DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[11] = dst_arr;
+    }
+    else {
+        distance[11] = 0;
+    }
+    
+    //square 13
+    sequencer_moveHeadHorizontal(-45);
+    DelayAprox10Us(shortWait);
+    sequencer_moveHeadVertical(-45);
+    srf_startRanging();
+    DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[12] = dst_arr;
+    }
+    else {
+        distance[12] = 0;
+    }
+    
+    //square 14
+    sequencer_moveHeadHorizontal(0);
+    sequencer_moveHeadVertical(0);
+    srf_startRanging();
+    DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[13] = dst_arr;
+    }
+    else {
+        distance[13] = 0;
+    }
     
     //move to bottom right
     sequencer_moveHeadHorizontal(45);
     sequencer_moveHeadVertical(45);
+    srf_startRanging();
     DelayAprox10Us(scanTime);
-    
-    
+    if(srf_getDistance(&dst_arr)) {
+        distance[14] = dst_arr;
+    }
+    else {
+        distance[14] = 0;
+    }
 }
 
 void neutralScan() {
     //move to middle center
+    int i;
+    for(i =0; i<15; i++) {
+        distance[i] = 0;
+    }
     sequencer_moveHeadHorizontal(0);
     DelayAprox10Us(shortWait);
     sequencer_moveHeadVertical(0);
     DelayAprox10Us(shortWait);
-}
+    srf_startRanging();
+    DelayAprox10Us(scanTime);
+    if(srf_getDistance(&dst_arr)) {
+        distance[8] = dst_arr;
+    }
+    else {
+        distance[8] = 0;
+    }
+}  
 
 
 void __ISR(_TIMER_3_VECTOR, ipl7auto) Timer3ISR(void) {
