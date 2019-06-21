@@ -1,6 +1,6 @@
 var blockValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];  //15 blocks
 //update loop
-setInterval(timedRequests, 100);
+setInterval(timedRequests, 200);
 
 function timedRequests() {
     //check if continuous scanning:
